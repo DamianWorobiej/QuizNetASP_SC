@@ -81,9 +81,10 @@ namespace QuizNetASPKolo.Controllers
             },
         };
 
-        public IActionResult Index()
+        public IActionResult GetAll()
         {
-            return View();
+            var questions = _questions;
+            return View(questions);
         }
     }
 }
