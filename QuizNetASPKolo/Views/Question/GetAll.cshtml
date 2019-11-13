@@ -1,0 +1,22 @@
+﻿@model List<Question>
+@{
+    ViewData["Title"] = "GetAll";
+}
+
+<h1>Questions</h1>
+
+
+
+@foreach (var question in Model)
+{
+    <h3>@question.Text</h3>
+    <ul class="list-group">
+        @foreach (var answer in question.Answers)
+	    {
+            <li class="list-group-item">
+                @answer.Text
+            </li>
+	    }
+    </ul>
+    
+}
