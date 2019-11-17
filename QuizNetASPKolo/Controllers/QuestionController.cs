@@ -92,5 +92,12 @@ namespace QuizNetASPKolo.Controllers
             var question = _questions.FirstOrDefault(x => x.Id == id);
             return View(question);
         }
+
+        public IActionResult Delete(int id)
+        {
+            var question = _questions.FirstOrDefault(x => x.Id == id);
+            _questions.Remove(question);
+            return RedirectToAction("GetAll");
+        }
     }
 }
