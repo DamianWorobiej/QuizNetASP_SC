@@ -1,6 +1,6 @@
 using System;
 
-namespace QuizNetASPKolo.Models
+namespace QuizNetDataAccess.Models
 {
     public class ErrorViewModel
     {
