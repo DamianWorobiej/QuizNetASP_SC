@@ -1,4 +1,4 @@
-﻿@model Question
+﻿@model QuizNetDataAccess.Models.Question
 @{
     ViewData["Title"] = "Get";
 }
@@ -16,9 +16,9 @@
             }
             else
             {
-    <li class="list-group-item">
-        @Model.Answers[i].Text
-    </li>
+                <li class="list-group-item">
+                    @Model.Answers[i].Text
+                </li>
             }
         }
     </ul>
