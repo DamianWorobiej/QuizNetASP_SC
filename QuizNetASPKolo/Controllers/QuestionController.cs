@@ -121,7 +121,7 @@ namespace QuizNetASPKolo.Controllers
 
             _questions.Add(question);
 
-            return RedirectToAction("GetAll");
+            return RedirectToAction("Get", routeValues: new { Id = question.Id });
         }
     }
 }
