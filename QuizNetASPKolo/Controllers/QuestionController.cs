@@ -105,5 +105,23 @@ namespace QuizNetASPKolo.Controllers
             Question newQuestion = new Question();
             return View(newQuestion);
         }
+
+        [HttpPost]
+        public IActionResult Create(Question question)
+        {
+            var lastQuestionId = _questions.Last().Id;
+            question.Id = lastQuestionId + 1;
+
+            var lastAnswerId = _questions.LastOrDefault().Answers.LastOrDefault().Id;
+            for (int i = 0; i < question.Answers.Length; i++)
+            {
+                question.Answers[i].Id = lastAnswerId + i + 1;
+                question.Answers[i].QuestionId = question.Id;
+            }
+
+            _questions.Add(question);
+
+            return RedirectToAction("GetAll");
+        }
     }
 }
