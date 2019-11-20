@@ -99,5 +99,11 @@ namespace QuizNetASPKolo.Controllers
             _questions.Remove(question);
             return RedirectToAction("GetAll");
         }
+
+        public IActionResult Create()
+        {
+            Question newQuestion = new Question();
+            return View(newQuestion);
+        }
     }
 }
