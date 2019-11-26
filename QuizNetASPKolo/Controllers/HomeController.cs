@@ -5,38 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using QuizNetASPKolo.Models;
+using QuizNetDataAccess.Models;
 
 namespace QuizNetASPKolo.Controllers
 {
     public class HomeController : Controller
     {
-
-        public static List<Student> Students = new List<Student>() 
-        { 
-            new Student()
-            {
-                Id = 1,
-                IndexNumber = 66644,
-                FirstName = "Nobody",
-                LastName = "Noone"
-            },
-            new Student()
-            {
-                Id = 2,
-                IndexNumber = 44666,
-                FirstName = "Numero",
-                LastName = "Duo"
-            },
-            new Student()
-            {
-                Id = 0,
-                IndexNumber = 0,
-                FirstName = "Pustka",
-                LastName = "Nisość"
-            }
-        };
-
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -44,11 +18,9 @@ namespace QuizNetASPKolo.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(int id)
+        public IActionResult Index()
         {
-            var student = Students.FirstOrDefault(s => s.Id == id);
-
-            return View(student);
+            return View();
         }
 
         public IActionResult Privacy()
