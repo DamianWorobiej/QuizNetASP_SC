@@ -4,11 +4,13 @@
 }
 
 <h1>Questions</h1>
+<a class="btn btn-primary" asp-controller="Question" asp-action="Create">Create</a>
 <br />
 @foreach (var question in Model)
 {
     <h3>@question.Text</h3>
     <a class="btn btn-primary" asp-controller="Question" asp-action="Get" asp-route-id="@question.Id">Details</a>
+    <a class="btn btn-info" asp-controller="Question" asp-action="Update" asp-route-id="@question.Id">Update</a>
     <a class="btn btn-danger" asp-controller="Question" asp-action="Delete" asp-route-id="@question.Id">Delete</a>
     <ul class="list-group">
         @foreach (var answer in question.Answers)
