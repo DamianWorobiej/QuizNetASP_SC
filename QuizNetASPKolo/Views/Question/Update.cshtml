@@ -1,0 +1,11 @@
+﻿@model QuizNetDataAccess.Models.Question
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Update</h1>
+
+<form method="post" asp-controller="Question" asp-action="Update">
+    <partial name="_CreateUpdateForm" model="Model" />
+    <button class="btn btn-primary" type="submit">Update</button>
+</form>
