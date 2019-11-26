@@ -101,7 +101,9 @@ namespace QuizNetDataAccess
 
         public void Update(Question question)
         {
-            throw new NotImplementedException();
+            Question editedQuestion = _questions.FirstOrDefault(x => x.Id == question.Id);
+            int index = _questions.IndexOf(editedQuestion);
+            _questions[index] = question;
         }
     }
 }
