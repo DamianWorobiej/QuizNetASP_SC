@@ -59,5 +59,18 @@ namespace QuizNetASPKolo.Controllers
 
             return RedirectToAction("Get", routeValues: new { Id = question.Id });
         }
+
+        public IActionResult Update(int id)
+        {
+            Question editedQuestion = _questionRepository.GetById(id);
+            return View(editedQuestion);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Question question)
+        {
+            _questionRepository.Update(question);
+            return RedirectToAction("GetAll");
+        }
     }
 }
