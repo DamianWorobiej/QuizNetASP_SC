@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizNetASPKolo", "QuizNetASPKolo\QuizNetASPKolo.csproj", "{4C9F5509-DC48-4D1A-B6D3-72776B8E3659}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizNetDataAccess", "QuizNetDataAccess\QuizNetDataAccess.csproj", "{C8102BB2-594E-4F50-86DE-B217A8E0A07E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizNetDataAccess", "QuizNetDataAccess\QuizNetDataAccess.csproj", "{C8102BB2-594E-4F50-86DE-B217A8E0A07E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizNetASPKolo.BusinessLogic", "QuizNetASPKolo.BusinessLogic\QuizNetASPKolo.BusinessLogic.csproj", "{63195D51-B8DE-49C1-A79F-CE0CF95138A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C8102BB2-594E-4F50-86DE-B217A8E0A07E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8102BB2-594E-4F50-86DE-B217A8E0A07E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8102BB2-594E-4F50-86DE-B217A8E0A07E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63195D51-B8DE-49C1-A79F-CE0CF95138A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63195D51-B8DE-49C1-A79F-CE0CF95138A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63195D51-B8DE-49C1-A79F-CE0CF95138A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63195D51-B8DE-49C1-A79F-CE0CF95138A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
