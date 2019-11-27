@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using QuizNetASPKolo.BusinessLogic;
 using QuizNetDataAccess;
 
 namespace QuizNetASPKolo
@@ -24,6 +25,7 @@ namespace QuizNetASPKolo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IQuestionRepository, InMemoryQuestionRepository>();
+            services.AddScoped<IQuizService, QuizService>();
             services.AddControllersWithViews();
         }
 
