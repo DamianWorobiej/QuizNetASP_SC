@@ -45,18 +45,7 @@ namespace QuizNetASPKolo.Controllers
         [HttpPost]
         public IActionResult Create(Question question)
         {
-            var lastQuestionId = _questionRepository.GetAll().Last().Id;
-            question.Id = lastQuestionId + 1;
-
-            var lastAnswerId = _questionRepository.GetAll().LastOrDefault().Answers.LastOrDefault().Id;
-            for (int i = 0; i < question.Answers.Length; i++)
-            {
-                question.Answers[i].Id = lastAnswerId + i + 1;
-                question.Answers[i].QuestionId = question.Id;
-            }
-
             _questionRepository.Add(question);
-
             return RedirectToAction("Get", routeValues: new { Id = question.Id });
         }
 
