@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using QuizNetASPKolo.BusinessLogic;
 using QuizNetDataAccess;
 using QuizNetDataAccess.Models;
 
@@ -14,9 +15,12 @@ namespace QuizNetASPKolo.Controllers
     {
         private readonly IQuestionRepository _questionRepository;
 
-        public QuestionController(IQuestionRepository questionRepository)
+        private readonly IQuizService _quizService;
+
+        public QuestionController(IQuestionRepository questionRepository, IQuizService quizService)
         {
             _questionRepository = questionRepository;
+            _quizService = quizService;
         }
         public IActionResult GetAll()
         {
@@ -61,6 +65,12 @@ namespace QuizNetASPKolo.Controllers
             }
 
             return RedirectToAction("Get", new { Id = question.Id });
+        }
+
+        public IActionResult GenerateQuiz()
+        {
+            List<Question> quiz = _quizService.GenerateQuiz();
+            return View("Quiz", quiz);
         }
     }
 }
