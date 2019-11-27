@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuizNetASPKolo.BusinessLogic;
 using QuizNetASPKolo.BusinessLogic.DTOs;
+using QuizNetASPKolo.Models;
 using QuizNetDataAccess;
 using QuizNetDataAccess.Models;
 
@@ -43,29 +44,30 @@ namespace QuizNetASPKolo.Controllers
 
         public IActionResult Create()
         {
-            Question newQuestion = new Question();
+            QuestionFormViewModel newQuestion = new QuestionFormViewModel();
             return View("QuestionForm", newQuestion);
         }
 
         public IActionResult Update(int id)
         {
             Question editedQuestion = _questionRepository.GetById(id);
-            return View("QuestionForm", editedQuestion);
+            QuestionFormViewModel newEditedQuestion = new QuestionFormViewModel(editedQuestion);
+            return View("QuestionForm", newEditedQuestion);
         }
 
         [HttpPost]
-        public IActionResult Save(Question question)
+        public IActionResult Save(QuestionFormViewModel viewModel)
         {
-            if (question.Id == 0)
+            if (viewModel.Question.Id == 0)
             {
-                _questionRepository.Add(question);
+                _questionRepository.Add(viewModel.GetQuestion());
             }
             else
             {
-                _questionRepository.Update(question);
+                _questionRepository.Update(viewModel.GetQuestion());
             }
 
-            return RedirectToAction("Get", new { Id = question.Id });
+            return RedirectToAction("Get", new { Id = viewModel.Question.Id });
         }
 
         public IActionResult GenerateQuiz()
