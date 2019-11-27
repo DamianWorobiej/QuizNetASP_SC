@@ -4,14 +4,12 @@ using System.Text;
 
 namespace QuizNetASPKolo.BusinessLogic.DTOs
 {
-    public class QuestionDto
+    public class AnswerDto
     {
         public int Id { get; set; }
 
         public string Text { get; set; }
 
-        public AnswerDto[] Answers { get; set; }
-
-        public int CorrectAnswerIndex { get; set; }
+        public int QuestionId { get; set; }
     }
 }
