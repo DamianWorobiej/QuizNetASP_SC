@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuizNetASPKolo.BusinessLogic;
+using QuizNetASPKolo.BusinessLogic.DTOs;
 using QuizNetDataAccess;
 using QuizNetDataAccess.Models;
 
@@ -69,7 +70,7 @@ namespace QuizNetASPKolo.Controllers
 
         public IActionResult GenerateQuiz()
         {
-            List<Question> quiz = _quizService.GenerateQuiz();
+            List<QuestionDto> quiz = _quizService.GenerateQuiz();
             return View("Quiz", quiz);
         }
     }
