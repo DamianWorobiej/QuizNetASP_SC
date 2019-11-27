@@ -7,20 +7,27 @@
 
 <form method="post" asp-controller="Question" asp-action="Save">
     <input type="hidden" asp-for="Question.Id"/>
+
     Question text:
     <input class="form-control" asp-for="Question.Text" />
+    <span asp-validation-for="Question.Text" class="text-danger"></span>
+
     <div class="form-check">
         Answers 1:
         <input class="form-control" asp-for="Question.Answers[0].Text" />
+        <span asp-validation-for="Question.Answers[0].Text" class="text-danger"></span>
 
         Answers 2:
         <input class="form-control" asp-for="Question.Answers[1].Text" />
+        <span asp-validation-for="Question.Answers[1].Text" class="text-danger"></span>
 
         Answers 3:
         <input class="form-control" asp-for="Question.Answers[2].Text" />
+        <span asp-validation-for="Question.Answers[2].Text" class="text-danger"></span>
 
         Answers 4:
         <input class="form-control" asp-for="Question.Answers[3].Text" />
+        <span asp-validation-for="Question.Answers[3].Text" class="text-danger"></span>
     </div>
 
     <div>
