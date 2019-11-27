@@ -39,27 +39,28 @@ namespace QuizNetASPKolo.Controllers
         public IActionResult Create()
         {
             Question newQuestion = new Question();
-            return View(newQuestion);
-        }
-
-        [HttpPost]
-        public IActionResult Create(Question question)
-        {
-            _questionRepository.Add(question);
-            return RedirectToAction("Get", routeValues: new { Id = question.Id });
+            return View("QuestionForm", newQuestion);
         }
 
         public IActionResult Update(int id)
         {
             Question editedQuestion = _questionRepository.GetById(id);
-            return View(editedQuestion);
+            return View("QuestionForm", editedQuestion);
         }
 
         [HttpPost]
-        public IActionResult Update(Question question)
+        public IActionResult Save(Question question)
         {
-            _questionRepository.Update(question);
-            return RedirectToAction("GetAll");
+            if (question.Id == 0)
+            {
+                _questionRepository.Add(question);
+            }
+            else
+            {
+                _questionRepository.Update(question);
+            }
+
+            return RedirectToAction("Get", new { Id = question.Id });
         }
     }
 }
