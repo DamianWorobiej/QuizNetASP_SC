@@ -58,6 +58,11 @@ namespace QuizNetASPKolo.Controllers
         [HttpPost]
         public IActionResult Save(QuestionFormViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("QuestionForm", viewModel);
+            }
+
             if (viewModel.Question.Id == 0)
             {
                 _questionRepository.Add(viewModel.GetQuestion());
