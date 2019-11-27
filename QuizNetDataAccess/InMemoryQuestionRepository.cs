@@ -109,11 +109,16 @@ namespace QuizNetDataAccess
             return _questions.SingleOrDefault(x => x.Id == id);
         }
 
-        public void Update(Question question)
+        public void Update(Question updatedQuestion)
         {
-            Question editedQuestion = _questions.FirstOrDefault(x => x.Id == question.Id);
-            int index = _questions.IndexOf(editedQuestion);
-            _questions[index] = question;
+            var questionToEdit = _questions.FirstOrDefault(q => q.Id == updatedQuestion.Id);
+            questionToEdit.Text = updatedQuestion.Text;
+            questionToEdit.CorrectAnswerIndex = updatedQuestion.CorrectAnswerIndex;
+
+            for (int i = 0; i < updatedQuestion.Answers.Length; i++)
+            {
+                questionToEdit.Answers[i].Text = updatedQuestion.Answers[i].Text;
+            }
         }
     }
 }
