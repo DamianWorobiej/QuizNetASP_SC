@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QuizNetASPKolo.BusinessLogic;
+using QuizNetASPKolo.BusinessLogic.Interfaces;
 using QuizNetDataAccess;
 
 namespace QuizNetASPKolo
@@ -26,6 +27,7 @@ namespace QuizNetASPKolo
         {
             services.AddScoped<IQuestionRepository, InMemoryQuestionRepository>();
             services.AddScoped<IQuizService, QuizService>();
+            services.AddScoped<IQuestionService, QuestionService>();
             services.AddControllersWithViews();
         }
 
