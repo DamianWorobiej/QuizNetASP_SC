@@ -5,7 +5,7 @@ using System.Text;
 
 namespace QuizNetASPKolo.BusinessLogic.Interfaces
 {
-    interface IQuestionService
+    public interface IQuestionService
     {
         IEnumerable<QuestionDto> GetAll();
         QuestionDto GetById(int id);

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace QuizNetASPKolo.BusinessLogic
 {
-    class QuestionService : IQuestionService
+    public class QuestionService : IQuestionService
     {
         private readonly IQuestionRepository _questionRepository;
 
