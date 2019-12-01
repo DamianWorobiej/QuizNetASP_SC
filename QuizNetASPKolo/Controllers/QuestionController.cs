@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuizNetASPKolo.BusinessLogic;
 using QuizNetASPKolo.BusinessLogic.DTOs;
+using QuizNetASPKolo.BusinessLogic.Interfaces;
 using QuizNetASPKolo.Models;
 using QuizNetDataAccess;
 using QuizNetDataAccess.Models;
@@ -15,30 +16,32 @@ namespace QuizNetASPKolo.Controllers
 {
     public class QuestionController : Controller
     {
-        private readonly IQuestionRepository _questionRepository;
 
         private readonly IQuizService _quizService;
 
-        public QuestionController(IQuestionRepository questionRepository, IQuizService quizService)
+        private readonly IQuestionService _questionService;
+
+
+        public QuestionController(IQuizService quizService, IQuestionService questionService)
         {
-            _questionRepository = questionRepository;
             _quizService = quizService;
+            _questionService = questionService;
         }
         public IActionResult GetAll()
         {
-            var questions = _questionRepository.GetAll();
+            var questions = _questionService.GetAll();
             return View(questions);
         }
 
         public IActionResult Get(int id)
         {
-            var question = _questionRepository.GetById(id);
+            var question = _questionService.GetById(id);
             return View(question);
         }
 
         public IActionResult Delete(int id)
         {
-            _questionRepository.Delete(id);
+            _questionService.Delete(id);
             return RedirectToAction("GetAll");
         }
 
@@ -50,8 +53,11 @@ namespace QuizNetASPKolo.Controllers
 
         public IActionResult Update(int id)
         {
-            Question editedQuestion = _questionRepository.GetById(id);
-            QuestionFormViewModel newEditedQuestion = new QuestionFormViewModel(editedQuestion);
+            QuestionDto editedQuestion = _questionService.GetById(id);
+            QuestionFormViewModel newEditedQuestion = new QuestionFormViewModel()
+            {
+                Question = editedQuestion
+            };
             return View("QuestionForm", newEditedQuestion);
         }
 
@@ -65,11 +71,11 @@ namespace QuizNetASPKolo.Controllers
 
             if (viewModel.Question.Id == 0)
             {
-                _questionRepository.Add(viewModel.GetQuestion());
+                _questionService.Add(viewModel.Question);
             }
             else
             {
-                _questionRepository.Update(viewModel.GetQuestion());
+                _questionService.Update(viewModel.Question);
             }
 
             return RedirectToAction("Get", new { Id = viewModel.Question.Id });
