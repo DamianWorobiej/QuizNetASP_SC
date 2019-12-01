@@ -3,6 +3,7 @@ using QuizNetASPKolo.BusinessLogic.Interfaces;
 using QuizNetDataAccess;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace QuizNetASPKolo.BusinessLogic
@@ -19,6 +20,9 @@ namespace QuizNetASPKolo.BusinessLogic
         public void Add(QuestionDto question)
         {
             _questionRepository.Add(question.ConvertToQuestion());
+            List<QuestionDto> questions = GetAll().ToList();
+            int maxIndex = questions.Max(x => x.Id);
+            question.Id = maxIndex;
         }
 
         public void Delete(int questionId)
