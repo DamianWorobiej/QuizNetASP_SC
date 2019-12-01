@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QuizNetASPKolo.BusinessLogic\QuizNetASPKolo.BusinessLogic.csproj" />
-    <ProjectReference Include="..\QuizNetDataAccess\QuizNetDataAccess.csproj" />
+    <ProjectReference Include="..\QuizNetDataAccess\QuizNetASPKolo.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\QuizNetDataAccess\QuizNetDataAccess.csproj" />
+    <ProjectReference Include="..\QuizNetDataAccess\QuizNetASPKolo.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>
