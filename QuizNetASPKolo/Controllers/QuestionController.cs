@@ -89,5 +89,15 @@ namespace QuizNetASPKolo.Controllers
             QuizViewModel quiz = new QuizViewModel(questionsList);
             return View("Quiz", quiz);
         }
+
+        [HttpPost]
+        public IActionResult CheckQuiz(QuizViewModel viewModel)
+        {
+            var questionIds = viewModel.Questions.Select(q => q.Id).ToArray();
+            var userAnswersIds = viewModel.UserAnswersIndexes;
+            var correctAnswers = _quizService.CheckQuiz(questionIds, userAnswersIds);
+
+            return View("QuizSummary", correctAnswers);
+        }
     }
 }
