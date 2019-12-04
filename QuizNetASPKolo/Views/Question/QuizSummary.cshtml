@@ -5,11 +5,11 @@
 
 <h1>QuizSummary</h1>
 
-<h2>Congratulations! You had @Model.CorrectAnswers (@Model.PercentageCorrect%) answers right!</h2>
+<h2>@Model.SummaryText You had @Model.CorrectAnswers (@Model.PercentageCorrect%) answers right!</h2>
 
 @for (int i = 0; i < Model.Questions.Count; i++)
 {
-    <div>
+    <div class="my-5">
         <h4>@Model.Questions[i].Text</h4>
 
         <ul class="list-group">

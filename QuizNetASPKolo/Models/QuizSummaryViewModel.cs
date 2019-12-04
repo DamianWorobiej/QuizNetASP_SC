@@ -19,6 +19,14 @@ namespace QuizNetASPKolo.Models
             }
         }
 
+        public string SummaryText
+        {
+            get
+            {
+                return PercentageCorrect > 50 ? "Well done!" : "Bummer!";
+            }
+        }
+
         public string ClassNamesForAnswer(int questionIndex, int answerIndex)
         {
             if (Questions[questionIndex].CorrectAnswerIndex == answerIndex)
