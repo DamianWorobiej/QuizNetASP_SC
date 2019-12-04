@@ -93,9 +93,8 @@ namespace QuizNetASPKolo.Controllers
         [HttpPost]
         public IActionResult CheckQuiz(QuizViewModel viewModel)
         {
-            var questionIds = viewModel.Questions.Select(q => q.Id).ToArray();
             var userAnswersIds = viewModel.UserAnswersIndexes;
-            var correctAnswers = _quizService.CheckQuiz(questionIds, userAnswersIds);
+            var correctAnswers = _quizService.CheckQuiz(viewModel.Questions, userAnswersIds);
 
             return View("QuizSummary", correctAnswers);
         }

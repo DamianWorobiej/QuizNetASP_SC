@@ -20,17 +20,16 @@ namespace QuizNetASPKolo.BusinessLogic
             _mapper = mapper;
         }
 
-        public int CheckQuiz(int[] questionIds, int[] userAnswersIds)
+        public int CheckQuiz(List<QuestionDto> questions, int[] userAnswersIds)
         {
             int correctAnswers = 0;
-            List<Question> questions = new List<Question>();
 
-            foreach (var id in questionIds)
+            for (int i = 0; i < questions.Count; i++)
             {
-                questions.Add(_questionRepository.GetById(id));
+                questions[i] = _mapper.Map<QuestionDto>(_questionRepository.GetById(questions[i].Id));
             }
 
-            for (int i = 0; i < questionIds.Length; i++)
+            for (int i = 0; i < questions.Count; i++)
             {
                 if (questions[i].CorrectAnswerIndex == userAnswersIds[i])
                 {
