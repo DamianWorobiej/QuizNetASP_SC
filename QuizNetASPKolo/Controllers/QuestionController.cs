@@ -80,7 +80,7 @@ namespace QuizNetASPKolo.Controllers
                 _questionService.Update(question);
             }
 
-            return RedirectToAction("Get", new { Id = question });
+            return RedirectToAction("Get", new { Id = question.Id });
         }
 
         public IActionResult GenerateQuiz()
