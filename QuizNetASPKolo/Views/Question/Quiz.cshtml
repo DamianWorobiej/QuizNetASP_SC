@@ -13,6 +13,7 @@
 	{
         <div class="mb-3">
             @Model.Questions[i].Text
+            <input type="hidden" asp-for="Questions[i].Id"/>
 
             @for (int j = 0; j < Model.Questions[i].Answers.Length; j++)
             {
