@@ -85,7 +85,8 @@ namespace QuizNetASPKolo.Controllers
 
         public IActionResult GenerateQuiz()
         {
-            List<QuestionDto> quiz = _quizService.GenerateQuiz();
+            List<QuestionDto> questionsList = _quizService.GenerateQuiz();
+            QuizViewModel quiz = new QuizViewModel(questionsList);
             return View("Quiz", quiz);
         }
     }
