@@ -1,4 +1,4 @@
-﻿@model List<QuizNetASPKolo.BusinessLogic.DTOs.QuestionDto>
+﻿@model QuizNetASPKolo.Models.QuizViewModel
 @{
     ViewData["Title"] = "Quiz";
 }
@@ -6,17 +6,25 @@
 <h1>Generated Quiz</h1>
 
 <br />
-@foreach (var question in Model)
-{
-    <h3>@question.Text</h3>
+<hr />
 
-    <ul class="list-group">
-        @foreach (var answer in question.Answers)
-        {
-            <li class="list-group-item">
-                @answer.Text
-            </li>
-        }
-    </ul>
+<form method="post" asp-controller="Question" asp-action="CheckQuiz">
+    @for (int i = 0; i < Model.Questions.Count(); i++)
+	{
+        <div class="mb-3">
+            @Model.Questions[i].Text
 
-}
+            @for (int j = 0; j < Model.Questions[i].Answers.Length; j++)
+            {
+                <div class="form-check">
+                    <input id="q@(i)_a@(j)" class="form-check-input" type="radio" asp-for="UserAnswersIndexes[i]" value="@j"/>
+                    <label class="form-check-label" for="q@(i)_a@(j)">
+                        @Model.Questions[i].Answers[j].Text
+                    </label>
+                </div>
+            }
+        </div>
+	}
+    <hr />
+    <button class="btn btn-primary" type="submit">Check my results</button>
+</form>
