@@ -25,6 +25,7 @@ namespace QuizNetASPKolo.BusinessLogic
         {
             var question = _mapper.Map<Question>(questionDto);
             _questionRepository.Add(question);
+            questionDto.Id = question.Id;
         }
 
         public void Delete(int questionId)
