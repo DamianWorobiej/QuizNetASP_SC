@@ -96,7 +96,14 @@ namespace QuizNetASPKolo.Controllers
             var userAnswersIds = viewModel.UserAnswersIndexes;
             var correctAnswers = _quizService.CheckQuiz(viewModel.Questions, userAnswersIds);
 
-            return View("QuizSummary", correctAnswers);
+            var summaryViewModel = new QuizSummaryViewModel()
+            {
+                Questions = viewModel.Questions,
+                UserAnswersIndexes = viewModel.UserAnswersIndexes,
+                CorrectAnswers = correctAnswers
+            };
+
+            return View("QuizSummary", summaryViewModel);
         }
     }
 }
