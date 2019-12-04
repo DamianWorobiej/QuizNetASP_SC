@@ -20,6 +20,27 @@ namespace QuizNetASPKolo.BusinessLogic
             _mapper = mapper;
         }
 
+        public int CheckQuiz(int[] questionIds, int[] userAnswersIds)
+        {
+            int correctAnswers = 0;
+            List<Question> questions = new List<Question>();
+
+            foreach (var id in questionIds)
+            {
+                questions.Add(_questionRepository.GetById(id));
+            }
+
+            for (int i = 0; i < questionIds.Length; i++)
+            {
+                if (questions[i].CorrectAnswerIndex == userAnswersIds[i])
+                {
+                    correctAnswers++;
+                }
+            }
+
+            return correctAnswers;
+        }
+
         public List<QuestionDto> GenerateQuiz()
         {
             List<Question> questions = _questionRepository.GetAll().ToList();

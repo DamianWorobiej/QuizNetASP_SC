@@ -9,5 +9,6 @@ namespace QuizNetASPKolo.BusinessLogic
     public interface IQuizService
     {
         List<QuestionDto> GenerateQuiz();
+        int CheckQuiz(int[] questionIds, int[] userAnswersIds);
     }
 }
