@@ -9,7 +9,7 @@ namespace QuizNetASPKolo.BusinessLogic.Interfaces
     {
         IEnumerable<QuestionDto> GetAll();
         QuestionDto GetById(int id);
-        void Add(QuestionDto question);
+        QuestionDto Add(QuestionDto question);
         void Update(QuestionDto question);
         void Delete(int questionId);
     }

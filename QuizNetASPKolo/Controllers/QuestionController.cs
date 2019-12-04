@@ -69,16 +69,18 @@ namespace QuizNetASPKolo.Controllers
                 return View("QuestionForm", viewModel);
             }
 
-            if (viewModel.Question.Id == 0)
+            var question = viewModel.Question;
+
+            if (question.Id == 0)
             {
-                _questionService.Add(viewModel.Question);
+                question = _questionService.Add(question);
             }
             else
             {
-                _questionService.Update(viewModel.Question);
+                _questionService.Update(question);
             }
 
-            return RedirectToAction("Get", new { Id = viewModel.Question.Id });
+            return RedirectToAction("Get", new { Id = question });
         }
 
         public IActionResult GenerateQuiz()
