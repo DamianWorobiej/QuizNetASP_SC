@@ -9,7 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QuizNetASPKolo.BusinessLogic;
 using QuizNetASPKolo.BusinessLogic.Interfaces;
+using QuizNetASPKolo.BusinessLogic.Mapper;
 using QuizNetDataAccess;
+using AutoMapper;
 
 namespace QuizNetASPKolo
 {
@@ -25,6 +27,7 @@ namespace QuizNetASPKolo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(MappingProfile));
             services.AddScoped<IQuestionRepository, InMemoryQuestionRepository>();
             services.AddScoped<IQuizService, QuizService>();
             services.AddScoped<IQuestionService, QuestionService>();
