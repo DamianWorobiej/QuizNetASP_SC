@@ -1,0 +1,9 @@
+﻿@model int
+@{
+    ViewData["Title"] = "QuizSummary";
+}
+
+<h1>QuizSummary</h1>
+Correct answers : @Model
+
+<a class="btn btn-primary" asp-controller="Questions" asp-action="GetAll">Return to questions</a>
