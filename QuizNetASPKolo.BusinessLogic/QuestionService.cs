@@ -1,6 +1,8 @@
-﻿using QuizNetASPKolo.BusinessLogic.DTOs;
+﻿using AutoMapper;
+using QuizNetASPKolo.BusinessLogic.DTOs;
 using QuizNetASPKolo.BusinessLogic.Interfaces;
 using QuizNetDataAccess;
+using QuizNetDataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +13,18 @@ namespace QuizNetASPKolo.BusinessLogic
     public class QuestionService : IQuestionService
     {
         private readonly IQuestionRepository _questionRepository;
+        private readonly IMapper _mapper;
 
-        public QuestionService(IQuestionRepository questionRepository)
+        public QuestionService(IQuestionRepository questionRepository, IMapper mapper)
         {
             _questionRepository = questionRepository;
+            _mapper = mapper;
         }
 
-        public void Add(QuestionDto question)
+        public void Add(QuestionDto questionDto)
         {
-            _questionRepository.Add(question.ConvertToQuestion());
-            List<QuestionDto> questions = GetAll().ToList();
-            int maxIndex = questions.Max(x => x.Id);
-            question.Id = maxIndex;
+            var question = _mapper.Map<Question>(questionDto);
+            _questionRepository.Add(question);
         }
 
         public void Delete(int questionId)
@@ -32,26 +34,22 @@ namespace QuizNetASPKolo.BusinessLogic
 
         public IEnumerable<QuestionDto> GetAll()
         {
-            var questionList = _questionRepository.GetAll();
-            List<QuestionDto> output = new List<QuestionDto>();
-
-            foreach (var question in questionList)
-            {
-                output.Add(QuestionDto.FromQuestion(question));
-            }
-
-            return output;
+            var questions = _questionRepository.GetAll();
+            var questionsDto = _mapper.Map<List<QuestionDto>>(questions);
+            return questionsDto;
         }
 
         public QuestionDto GetById(int id)
         {
             var question = _questionRepository.GetById(id);
-            return QuestionDto.FromQuestion(question);
+            var questionDto = _mapper.Map<QuestionDto>(question);
+            return questionDto;
         }
 
-        public void Update(QuestionDto question)
+        public void Update(QuestionDto questionDto)
         {
-            _questionRepository.Update(question.ConvertToQuestion());
+            var question = _mapper.Map<Question>(questionDto);
+            _questionRepository.Update(question);
         }
     }
 }
