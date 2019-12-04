@@ -27,6 +27,14 @@ namespace QuizNetASPKolo.Models
             }
         }
 
+        public string ProgressBarColor
+        {
+            get
+            {
+                return PercentageCorrect > 50 ? "bg-success" : "bg-danger";
+            }
+        }
+
         public string ClassNamesForAnswer(int questionIndex, int answerIndex)
         {
             if (Questions[questionIndex].CorrectAnswerIndex == answerIndex)

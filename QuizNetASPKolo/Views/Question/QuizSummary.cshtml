@@ -5,7 +5,10 @@
 
 <h1>QuizSummary</h1>
 
-<h2>@Model.SummaryText You had @Model.CorrectAnswers (@Model.PercentageCorrect%) answers right!</h2>
+<h2>@Model.SummaryText You had @Model.CorrectAnswers (@Model.PercentageCorrect.ToString(format: "#.##")%) answers right!</h2>
+<div class="progress">
+    <div class="progress-bar @Model.ProgressBarColor" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: @Model.PercentageCorrect%"></div>
+</div>
 
 @for (int i = 0; i < Model.Questions.Count; i++)
 {
