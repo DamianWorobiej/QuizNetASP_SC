@@ -90,6 +90,13 @@ namespace QuizNetASPKolo.Controllers
             return View("Quiz", quiz);
         }
 
+        public IActionResult GenerateQuizWithRecentQuestions()
+        {
+            List<QuestionDto> questionsList = _quizService.GenerateRecentlyAddedQuestionsQuiz();
+            QuizViewModel quiz = new QuizViewModel(questionsList);
+            return View("Quiz", quiz);
+        }
+
         [HttpPost]
         public IActionResult CheckQuiz(QuizViewModel viewModel)
         {
