@@ -14,5 +14,9 @@ namespace QuizNetDataAccess.Models
         public Answer[] Answers { get; set; }
 
         public int CorrectAnswerIndex { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+
+        public DateTime UpdatedAt { get; set; }
     }
 }

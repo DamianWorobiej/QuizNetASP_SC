@@ -19,6 +19,10 @@ namespace QuizNetASPKolo.BusinessLogic.DTOs
 
         public int CorrectAnswerIndex { get; set; }
 
+        public DateTime CreatedAt { get; set; }
+
+        public DateTime UpdatedAt { get; set; }
+
         public static QuestionDto FromQuestion(Question question)
         {
             return new QuestionDto()
