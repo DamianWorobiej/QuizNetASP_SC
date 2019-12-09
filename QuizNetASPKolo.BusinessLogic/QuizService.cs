@@ -49,5 +49,15 @@ namespace QuizNetASPKolo.BusinessLogic
 
             return randomQuestionsDto;
         }
+
+        public List<QuestionDto> GenerateRecentlyAddedQuestionsQuiz()
+        {
+            List<Question> questions = _questionRepository.GetAll().ToList();
+            var randomQuestions = questions.OrderByDescending(x => x.CreatedAt).Take(3).ToList();
+
+            List<QuestionDto> randomQuestionsDto = _mapper.Map<List<QuestionDto>>(randomQuestions);
+
+            return randomQuestionsDto;
+        }
     }
 }
