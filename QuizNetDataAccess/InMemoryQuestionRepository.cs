@@ -45,7 +45,9 @@ namespace QuizNetDataAccess
                         Text = "password"
 
                     },
-                }
+                },
+                CreatedAt = new DateTime(2019, 07, 11, 18, 45, 00),
+                UpdatedAt = new DateTime(2019, 07, 11, 18, 45, 00)
             },
             new Question()
             {
@@ -82,7 +84,9 @@ namespace QuizNetDataAccess
                         Text = "JavaScript"
 
                     },
-                }
+                },
+                CreatedAt = new DateTime(2019, 07, 11, 18, 45, 01),
+                UpdatedAt = new DateTime(2019, 07, 11, 18, 45, 01)
             },
             new Question()
             {
@@ -115,7 +119,9 @@ namespace QuizNetDataAccess
                         QuestionId = 3,
                         Text = "GET"
                     },
-                }
+                },
+                CreatedAt = new DateTime(2019, 07, 11, 18, 45, 02),
+                UpdatedAt = new DateTime(2019, 07, 11, 18, 45, 02)
             },
             new Question()
             {
@@ -148,7 +154,9 @@ namespace QuizNetDataAccess
                         QuestionId = 4,
                         Text = "Wszystkie wymienione"
                     },
-                }
+                },
+                CreatedAt = new DateTime(2019, 07, 11, 18, 45, 03),
+                UpdatedAt = new DateTime(2019, 07, 11, 18, 45, 03)
             },
             new Question()
             {
@@ -181,7 +189,9 @@ namespace QuizNetDataAccess
                         QuestionId = 5,
                         Text = "Tworzy instancje obiektów zainicjalizowane w kontenerze DI"
                     },
-                }
+                },
+                CreatedAt = new DateTime(2019, 07, 11, 18, 45, 04),
+                UpdatedAt = new DateTime(2019, 07, 11, 18, 45, 04)
             }
         };
 
@@ -196,6 +206,8 @@ namespace QuizNetDataAccess
                 question.Answers[i].Id = lastAnswerId + i + 1;
                 question.Answers[i].QuestionId = question.Id;
             }
+
+            question.CreatedAt = question.UpdatedAt = DateTime.Now;
 
             _questions.Add(question);
         }
@@ -226,6 +238,8 @@ namespace QuizNetDataAccess
             {
                 questionToEdit.Answers[i].Text = updatedQuestion.Answers[i].Text;
             }
+
+            questionToEdit.UpdatedAt = DateTime.Now;
         }
     }
 }
