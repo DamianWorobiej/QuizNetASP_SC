@@ -43,7 +43,7 @@ namespace QuizNetASPKolo.BusinessLogic
         public List<QuestionDto> GenerateQuiz()
         {
             List<Question> questions = _questionRepository.GetAll().ToList();
-            var randomQuestions = questions.OrderBy(x => Guid.NewGuid()).Take(2).ToList();
+            var randomQuestions = questions.OrderBy(x => Guid.NewGuid()).Take(3).ToList();
 
             List<QuestionDto> randomQuestionsDto = _mapper.Map<List<QuestionDto>>(randomQuestions);
 
