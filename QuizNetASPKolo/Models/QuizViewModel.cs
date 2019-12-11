@@ -12,15 +12,18 @@ namespace QuizNetASPKolo.Models
 
         public int[] UserAnswersIndexes { get; set; }
 
+        public string QuizType { get; set; }
+
         public QuizViewModel()
         {
 
         }
 
-        public QuizViewModel(List<QuestionDto> questions)
+        public QuizViewModel(List<QuestionDto> questions, string quizType)
         {
             Questions = questions;
             UserAnswersIndexes = new int[Questions.Count()];
+            QuizType = quizType;
         }
     }
 }
