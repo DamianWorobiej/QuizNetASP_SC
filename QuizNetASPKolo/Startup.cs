@@ -12,6 +12,8 @@ using QuizNetASPKolo.BusinessLogic.Interfaces;
 using QuizNetASPKolo.BusinessLogic.Mapper;
 using QuizNetDataAccess;
 using AutoMapper;
+using QuizNetASPKolo.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace QuizNetASPKolo
 {
@@ -28,6 +30,8 @@ namespace QuizNetASPKolo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddDbContext<EFDbContext>(options => options.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=QuizNetASPKolo;Trusted_Connection=True;"));
+            //services.AddDbContext<EFDbContext>(options => options.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=QuizNetASPKolo;Trusted_Connection=True;"));
             services.AddScoped<IQuestionRepository, InMemoryQuestionRepository>();
             services.AddScoped<IQuizService, QuizService>();
             services.AddScoped<IQuestionService, QuestionService>();
