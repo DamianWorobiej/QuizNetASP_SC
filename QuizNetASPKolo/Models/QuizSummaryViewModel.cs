@@ -37,15 +37,15 @@ namespace QuizNetASPKolo.Models
 
         public string ClassNamesForAnswer(int questionIndex, int answerIndex)
         {
-            if (Questions[questionIndex].CorrectAnswerIndex == answerIndex)
-            {
-                return "list-group-item-success";
-            }
+            //if (Questions[questionIndex].CorrectAnswerIndex == answerIndex)
+            //{
+            //    return "list-group-item-success";
+            //}
             
-            if (UserAnswersIndexes[questionIndex] == answerIndex)
-            {
-                return "list-group-item-danger";
-            }
+            //if (UserAnswersIndexes[questionIndex] == answerIndex)
+            //{
+            //    return "list-group-item-danger";
+            //}
 
             return string.Empty;
         }
