@@ -32,7 +32,7 @@ namespace QuizNetASPKolo
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddDbContext<EFDbContext>(options => options.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=QuizNetASPKolo;Trusted_Connection=True;"));
             //services.AddDbContext<EFDbContext>(options => options.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=QuizNetASPKolo;Trusted_Connection=True;"));
-            services.AddScoped<IQuestionRepository, InMemoryQuestionRepository>();
+            services.AddScoped<IQuestionRepository, EFQuestionRepository>();
             services.AddScoped<IQuizService, QuizService>();
             services.AddScoped<IQuestionService, QuestionService>();
             services.AddControllersWithViews();
