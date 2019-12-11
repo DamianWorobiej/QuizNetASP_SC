@@ -1,4 +1,5 @@
-﻿using QuizNetDataAccess;
+﻿using Microsoft.EntityFrameworkCore;
+using QuizNetDataAccess;
 using QuizNetDataAccess.Models;
 using System;
 using System.Collections.Generic;
@@ -24,14 +25,14 @@ namespace QuizNetASPKolo.DataAccess
 
         public void Delete(int questionId)
         {
-            var questionToDelete = _dbContext.Questions.SingleOrDefault(x => x.Id == questionId);
+            var questionToDelete = _dbContext.Questions.Include(x => x.Answers).SingleOrDefault(x => x.Id == questionId);
             _dbContext.Questions.Remove(questionToDelete);
             _dbContext.SaveChanges();
         }
 
         public IEnumerable<Question> GetAll()
         {
-            return _dbContext.Questions.AsEnumerable();
+            return _dbContext.Questions.Include(x => x.Answers).AsEnumerable();
         }
 
         public Question GetById(int id)
@@ -41,7 +42,7 @@ namespace QuizNetASPKolo.DataAccess
 
         public void Update(Question question)
         {
-            var questionToUpdate = _dbContext.Questions.SingleOrDefault(x => x.Id == question.Id);
+            var questionToUpdate = _dbContext.Questions.Include(x => x.Answers).SingleOrDefault(x => x.Id == question.Id);
             questionToUpdate.Text = question.Text;
 
             for (int i = 0; i < questionToUpdate.Answers.Count; i++)
