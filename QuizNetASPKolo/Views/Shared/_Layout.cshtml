@@ -28,10 +28,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Question" asp-action="GetAll">All Questions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Question" asp-action="GenerateQuiz">Generate Quiz</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Question" asp-action="GenerateQuiz" asp-route-quizType="random">Generate random Quiz</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Question" asp-action="GenerateQuizWithRecentQuestions">Generate Quiz with recent questions</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Question" asp-action="GenerateQuiz" asp-route-quizType="recent">Generate Quiz with recent questions</a>
                         </li>
                     </ul>
                 </div>
