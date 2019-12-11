@@ -10,6 +10,7 @@ namespace QuizNetASPKolo.Models
     public class QuestionFormViewModel
     {
         public QuestionDto Question{ get; set; }
+        public int CorrectAnswerIndex { get; set; }
 
         public string ActionType { 
             get
@@ -21,6 +22,12 @@ namespace QuizNetASPKolo.Models
         public QuestionFormViewModel()
         {
             Question = new QuestionDto();
+        }
+
+        public QuestionFormViewModel(QuestionDto question)
+        {
+            Question = question;
+            CorrectAnswerIndex = Question.Answers.ToList().FindIndex(x => x.IsCorrect);
         }
     }
 }

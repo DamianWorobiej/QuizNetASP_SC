@@ -54,10 +54,7 @@ namespace QuizNetASPKolo.Controllers
         public IActionResult Update(int id)
         {
             QuestionDto editedQuestion = _questionService.GetById(id);
-            QuestionFormViewModel newEditedQuestion = new QuestionFormViewModel()
-            {
-                Question = editedQuestion
-            };
+            QuestionFormViewModel newEditedQuestion = new QuestionFormViewModel(editedQuestion);
             return View("QuestionForm", newEditedQuestion);
         }
 
@@ -70,6 +67,7 @@ namespace QuizNetASPKolo.Controllers
             }
 
             var question = viewModel.Question;
+            question.Answers[viewModel.CorrectAnswerIndex].IsCorrect = true;
 
             if (question.Id == 0)
             {
@@ -107,13 +105,13 @@ namespace QuizNetASPKolo.Controllers
         [HttpPost]
         public IActionResult CheckQuiz(QuizViewModel viewModel)
         {
-            var userAnswersIds = viewModel.UserAnswersIndexes;
+            var userAnswersIds = viewModel.UserAnswerIds;
             var correctAnswers = _quizService.CheckQuiz(viewModel.Questions, userAnswersIds);
 
             var summaryViewModel = new QuizSummaryViewModel()
             {
                 Questions = viewModel.Questions,
-                UserAnswersIndexes = viewModel.UserAnswersIndexes,
+                UserAnswersIds = viewModel.UserAnswerIds,
                 CorrectAnswers = correctAnswers
             };
 

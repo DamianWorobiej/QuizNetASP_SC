@@ -10,7 +10,7 @@ namespace QuizNetASPKolo.Models
     {
         public List<QuestionDto> Questions { get; set; }
 
-        public int[] UserAnswersIndexes { get; set; }
+        public int[] UserAnswerIds { get; set; }
 
         public string QuizType { get; set; }
 
@@ -22,7 +22,7 @@ namespace QuizNetASPKolo.Models
         public QuizViewModel(List<QuestionDto> questions, string quizType)
         {
             Questions = questions;
-            UserAnswersIndexes = new int[Questions.Count()];
+            UserAnswerIds = new int[Questions.Count()];
             QuizType = quizType;
         }
     }

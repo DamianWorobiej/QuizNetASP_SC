@@ -9,7 +9,7 @@ namespace QuizNetASPKolo.Models
     public class QuizSummaryViewModel
     {
         public List<QuestionDto> Questions { get; set; }
-        public int[] UserAnswersIndexes { get; set; }
+        public int[] UserAnswersIds { get; set; }
         public int CorrectAnswers { get; set; }
         public double PercentageCorrect
         {
@@ -35,17 +35,17 @@ namespace QuizNetASPKolo.Models
             }
         }
 
-        public string ClassNamesForAnswer(int questionIndex, int answerIndex)
+        public string ClassNamesForAnswer(AnswerDto answer, int userAnswerIndex)
         {
-            //if (Questions[questionIndex].CorrectAnswerIndex == answerIndex)
-            //{
-            //    return "list-group-item-success";
-            //}
+            if (answer.IsCorrect)
+            {
+                return "list-group-item-success";
+            }
             
-            //if (UserAnswersIndexes[questionIndex] == answerIndex)
-            //{
-            //    return "list-group-item-danger";
-            //}
+            if (UserAnswersIds[userAnswerIndex] == answer.Id)
+            {
+                return "list-group=item-danger";
+            }
 
             return string.Empty;
         }

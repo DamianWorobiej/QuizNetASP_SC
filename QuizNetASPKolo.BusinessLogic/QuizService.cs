@@ -31,10 +31,10 @@ namespace QuizNetASPKolo.BusinessLogic
 
             for (int i = 0; i < questions.Count; i++)
             {
-                //if (questions[i].Answers.FirstOrDefault(x => x.IsCorrect) == userAnswersIds[i])
-                //{
-                //    correctAnswers++;
-                //}
+                if (questions[i].Answers.FirstOrDefault(x => x.IsCorrect).Id == userAnswersIds[i])
+                {
+                    correctAnswers++;
+                }
             }
 
             return correctAnswers;
