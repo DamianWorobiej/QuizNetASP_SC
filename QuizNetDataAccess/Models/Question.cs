@@ -11,9 +11,7 @@ namespace QuizNetDataAccess.Models
 
         public string Text { get; set; }
 
-        public Answer[] Answers { get; set; }
-
-        public int CorrectAnswerIndex { get; set; }
+        public List<Answer> Answers { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
