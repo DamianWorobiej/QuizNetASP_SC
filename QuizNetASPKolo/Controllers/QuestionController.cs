@@ -83,18 +83,25 @@ namespace QuizNetASPKolo.Controllers
             return RedirectToAction("Get", new { Id = question.Id });
         }
 
-        public IActionResult GenerateQuiz()
+        [Route("{controller}/{action}/{quizType}")]
+        public IActionResult GenerateQuiz(string quizType)
         {
-            List<QuestionDto> questionsList = _quizService.GenerateQuiz();
-            QuizViewModel quiz = new QuizViewModel(questionsList);
-            return View("Quiz", quiz);
-        }
+            List<QuestionDto> quiz = new List<QuestionDto>();
+            if (quizType == "recent")
+            {
+                quiz = _quizService.GenerateRecentlyAddedQuestionsQuiz();
+            }
+            else if (quizType == "random")
+            {
+                quiz = _quizService.GenerateQuiz();
+            }
+            else
+            {
+                return RedirectToAction("GetAll");
+            }
 
-        public IActionResult GenerateQuizWithRecentQuestions()
-        {
-            List<QuestionDto> questionsList = _quizService.GenerateRecentlyAddedQuestionsQuiz();
-            QuizViewModel quiz = new QuizViewModel(questionsList);
-            return View("Quiz", quiz);
+            var quizViewModel = new QuizViewModel(quiz, quizType);
+            return View("Quiz", quizViewModel);
         }
 
         [HttpPost]
