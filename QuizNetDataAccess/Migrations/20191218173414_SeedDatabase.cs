@@ -7,7 +7,7 @@ namespace QuizNetASPKolo.DataAccess.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.Sql(@"--1 pytanie
-            INSERT INTO[dbo].[Questions]([Text],[CreatedAt]) VALUES('Jakiej metody HTTP używamy aby pobrać dane z serwera?', GETDATE())
+            INSERT INTO[dbo].[Questions]([Text],[CreatedAt],[UpdatedAt]) VALUES('Jakiej metody HTTP używamy aby pobrać dane z serwera?', GETDATE(), GETDATE())
             DECLARE @questionId AS int = SCOPE_IDENTITY()
             INSERT INTO[dbo].[Answers]
                     ([Text],[IsCorrect],[QuestionId]) VALUES('PUT',0, @questionId)
@@ -19,7 +19,7 @@ namespace QuizNetASPKolo.DataAccess.Migrations
                     ([Text],[IsCorrect],[QuestionId]) VALUES('DELETE',0, @questionId)
             --2 pytanie
             INSERT INTO[dbo].[Questions]
-                    ([Text],[CreatedAt]) VALUES('Na jakim systemie operacyjnym możemy uruchomić aplikację napisaną w .NET Core?', GETDATE())
+                    ([Text],[CreatedAt],[UpdatedAt]) VALUES('Na jakim systemie operacyjnym możemy uruchomić aplikację napisaną w .NET Core?', GETDATE(), GETDATE())
             SET @questionId = SCOPE_IDENTITY()
             INSERT INTO[dbo].[Answers]
                     ([Text],[IsCorrect],[QuestionId]) VALUES('Tylko Linux',0, @questionId)
@@ -31,7 +31,7 @@ namespace QuizNetASPKolo.DataAccess.Migrations
                     ([Text],[IsCorrect],[QuestionId]) VALUES('Jest cross platformowy',1, @questionId)
             --3 pytanie
             INSERT INTO[dbo].[Questions]
-                    ([Text],[CreatedAt]) VALUES('Które zdanie najlepiej opisuje kontroler', GETDATE())
+                    ([Text],[CreatedAt],[UpdatedAt]) VALUES('Które zdanie najlepiej opisuje kontroler', GETDATE(), GETDATE())
             SET @questionId = SCOPE_IDENTITY()
             INSERT INTO[dbo].[Answers]
                     ([Text],[IsCorrect],[QuestionId]) VALUES('Wykonuje operacje przeszukiwania i modyfikacji bazy danych',0, @questionId)
@@ -43,7 +43,7 @@ namespace QuizNetASPKolo.DataAccess.Migrations
                     ([Text],[IsCorrect],[QuestionId]) VALUES('Tworzy instancje obiektów zainicjalizowane w kontenerze DI',0, @questionId)
             --4 pytanie
             INSERT INTO[dbo].[Questions]
-                    ([Text],[CreatedAt]) VALUES('Która metoda służy do sortowania kolekcji z wykorzystaniem LINQ', GETDATE())
+                    ([Text],[CreatedAt],[UpdatedAt]) VALUES('Która metoda służy do sortowania kolekcji z wykorzystaniem LINQ', GETDATE(), GETDATE())
             SET @questionId = SCOPE_IDENTITY()
             INSERT INTO[dbo].[Answers]
                     ([Text],[IsCorrect],[QuestionId]) VALUES('First',0, @questionId)
@@ -55,7 +55,7 @@ namespace QuizNetASPKolo.DataAccess.Migrations
                     ([Text],[IsCorrect],[QuestionId]) VALUES('OrderBy',1, @questionId)
             --5 pytanie
             INSERT INTO[dbo].[Questions]
-                    ([Text],[CreatedAt]) VALUES('Co robi metoda FirstOrDefault', GETDATE())
+                    ([Text],[CreatedAt],[UpdatedAt]) VALUES('Co robi metoda FirstOrDefault', GETDATE(), GETDATE())
             SET @questionId = SCOPE_IDENTITY()
             INSERT INTO[dbo].[Answers]
                     ([Text],[IsCorrect],[QuestionId]) VALUES('Zwraca ostatni element kolekcji',0, @questionId)
@@ -67,7 +67,7 @@ namespace QuizNetASPKolo.DataAccess.Migrations
                     ([Text],[IsCorrect],[QuestionId]) VALUES('Nic nie robi',0, @questionId)
             --6 pytanie
             INSERT INTO[dbo].[Questions]
-                    ([Text],[CreatedAt]) VALUES('Co to jest EntityFramework', GETDATE())
+                    ([Text],[CreatedAt],[UpdatedAt]) VALUES('Co to jest EntityFramework', GETDATE(), GETDATE())
             SET @questionId = SCOPE_IDENTITY()
             INSERT INTO[dbo].[Answers]
                     ([Text],[IsCorrect],[QuestionId]) VALUES('Rodzaj kolekcji',0, @questionId)
@@ -79,7 +79,7 @@ namespace QuizNetASPKolo.DataAccess.Migrations
                     ([Text],[IsCorrect],[QuestionId]) VALUES('System ERP',0, @questionId)
             --7 pytanie
             INSERT INTO[dbo].[Questions]
-                    ([Text],[CreatedAt]) VALUES('Który język nie należy do platformy .NET', GETDATE())
+                    ([Text],[CreatedAt],[UpdatedAt]) VALUES('Który język nie należy do platformy .NET', GETDATE(), GETDATE())
             SET @questionId = SCOPE_IDENTITY()
             INSERT INTO[dbo].[Answers]
                     ([Text],[IsCorrect],[QuestionId]) VALUES('C#',0, @questionId)
@@ -91,7 +91,7 @@ namespace QuizNetASPKolo.DataAccess.Migrations
                     ([Text],[IsCorrect],[QuestionId]) VALUES('VB',0, @questionId)
             --8 pytanie
             INSERT INTO[dbo].[Questions]
-                    ([Text],[CreatedAt]) VALUES('Które framework nie jest powiązane z .NET', GETDATE())
+                    ([Text],[CreatedAt],[UpdatedAt]) VALUES('Które framework nie jest powiązane z .NET', GETDATE(), GETDATE())
             SET @questionId = SCOPE_IDENTITY()
             INSERT INTO[dbo].[Answers]
                     ([Text],[IsCorrect],[QuestionId]) VALUES('WPF',0, @questionId)
