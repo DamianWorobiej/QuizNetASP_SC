@@ -14,27 +14,42 @@
 
     <div class="form-check">
         Answers 1:
-        <input class="form-control" asp-for="Question.Answers[0].Text" />
+        <input id="answer0" class="form-control" asp-for="Question.Answers[0].Text" />
         <span asp-validation-for="Question.Answers[0].Text" class="text-danger"></span>
 
         Answers 2:
-        <input class="form-control" asp-for="Question.Answers[1].Text" />
+        <input id="answer1" class="form-control" asp-for="Question.Answers[1].Text" />
         <span asp-validation-for="Question.Answers[1].Text" class="text-danger"></span>
 
         Answers 3:
-        <input class="form-control" asp-for="Question.Answers[2].Text" />
+        <input id="answer2" class="form-control" asp-for="Question.Answers[2].Text" />
         <span asp-validation-for="Question.Answers[2].Text" class="text-danger"></span>
 
         Answers 4:
-        <input class="form-control" asp-for="Question.Answers[3].Text" />
+        <input id="answer3" class="form-control" asp-for="Question.Answers[3].Text" />
         <span asp-validation-for="Question.Answers[3].Text" class="text-danger"></span>
     </div>
 
     <select class="custom-select" asp-for="CorrectAnswerIndex">
-        <option value="0" selected>#1</option>
-        <option value="1">#2</option>
-        <option value="2">#3</option>
-        <option value="3">#4</option>
+        <option value="0" id="0" selected>#1</option>
+        <option value="1" id="1">#2</option>
+        <option value="2" id="2">#3</option>
+        <option value="3" id="3">#4</option>
     </select>
     <button class="btn btn-primary" type="submit">@Model.ActionType</button>
 </form>
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () {
+            for (var i = 0; i < 4; i++) {
+                $("#answer" + i).on("input",
+                function (e) {
+                    var enteredText = e.target.value;
+                    $("#" + i).html(enteredText);
+                });
+            }
+            
+        });
+    </script>
+}
