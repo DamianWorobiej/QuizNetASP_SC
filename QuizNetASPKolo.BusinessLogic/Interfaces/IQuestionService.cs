@@ -12,5 +12,6 @@ namespace QuizNetASPKolo.BusinessLogic.Interfaces
         QuestionDto Add(QuestionDto question);
         void Update(QuestionDto question);
         void Delete(int questionId);
+        QuestionsMetadataDto GetMetadata();
     }
 }

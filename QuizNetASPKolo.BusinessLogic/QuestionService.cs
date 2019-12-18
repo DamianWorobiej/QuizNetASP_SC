@@ -53,5 +53,20 @@ namespace QuizNetASPKolo.BusinessLogic
             var question = _mapper.Map<Question>(questionDto);
             _questionRepository.Update(question);
         }
+
+        public QuestionsMetadataDto GetMetadata()
+        {
+            var allQuestions = _questionRepository.GetAll().ToList();
+            var questionsCount = allQuestions.Count;
+            DateTime oldestQuestionDate = allQuestions.Min(q => q.CreatedAt).Date;
+            DateTime newestQuestionDate = allQuestions.Max(q => q.CreatedAt).Date;
+
+            return new QuestionsMetadataDto()
+            { 
+                QuestionsCount = questionsCount,
+                OldestQuestionDate = oldestQuestionDate,
+                NewestQuestionDate = newestQuestionDate
+            };
+        }
     }
 }
