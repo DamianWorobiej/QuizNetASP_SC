@@ -27,6 +27,8 @@ namespace QuizNetASPKolo.Controllers
             _quizService = quizService;
             _questionService = questionService;
         }
+
+        [ResponseCache(Duration = 120, Location = ResponseCacheLocation.Client)]
         public IActionResult GetAll()
         {
             var questions = _questionService.GetAll();
