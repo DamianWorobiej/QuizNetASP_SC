@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizNetASPKolo.DataAccess",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizNetASPKolo.BusinessLogic", "QuizNetASPKolo.BusinessLogic\QuizNetASPKolo.BusinessLogic.csproj", "{63195D51-B8DE-49C1-A79F-CE0CF95138A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizNetASPKolo.Tests", "QuizNetASPKolo.Tests\QuizNetASPKolo.Tests.csproj", "{725C23CC-4AD9-434B-B8DA-200C241EE1BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{63195D51-B8DE-49C1-A79F-CE0CF95138A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63195D51-B8DE-49C1-A79F-CE0CF95138A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63195D51-B8DE-49C1-A79F-CE0CF95138A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{725C23CC-4AD9-434B-B8DA-200C241EE1BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{725C23CC-4AD9-434B-B8DA-200C241EE1BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{725C23CC-4AD9-434B-B8DA-200C241EE1BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{725C23CC-4AD9-434B-B8DA-200C241EE1BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
