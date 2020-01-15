@@ -1,0 +1,8 @@
+﻿@model DateTime
+@{
+    ViewData["Title"] = "Cache";
+}
+
+<h1>Czas pobrany z cache: @Model.ToLongTimeString()</h1>
+<h1>Aktualny czas: @DateTime.Now.ToLongTimeString()</h1>
+
